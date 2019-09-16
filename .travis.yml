@@ -5,4 +5,15 @@ before_install:
  - docker build -t ravi/docker-react -f Dockerfile.dev .
 script:
  - docker run ravi/docker-react npm run test -- --coverage
-
+deploy:
+ provider: elasticbeanstalk
+ region: "us-east-1"
+ app: "dcoker-react"
+ env: "DcokerReact-env"
+ bucket_name: "elasticbeanstalk-us-east-1-492125883413"
+ bucket_path: "dcoker-react"
+ on:
+  branch: master
+ access_key_id: $AWS_ACCESS_KEY
+ secret_access_key:
+  secure: "$AWS_SECRET_KEY"
