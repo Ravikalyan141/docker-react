@@ -2,9 +2,9 @@ sudo: required
 services:
  - docker
 before_install:
- - docker build -t TAGGEDIMAGE -f Dockerfile.dev .
+ - docker build -t ravi/docker-react -f Dockerfile.dev .
 script:
- - docker run TAGGEDIMAGE npm run test -- --coverage
+ - docker run ravi/docker-react npm run test -- --coverage
 deploy:
  provider: elasticbeanstalk
  region: "us-east-1"
